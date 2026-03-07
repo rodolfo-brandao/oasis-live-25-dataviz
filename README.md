@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-white.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/blob/main/LICENSE)
 ![Python version](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
+[![Pylint](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
 
 <p align="center">
     <img src="assets/oasis-live-25-logo.png" width="300" />
