@@ -4,7 +4,7 @@
 
 # Oasis Live '25 – Data Visualization
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-white.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-white.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/blob/main/LICENSE)
 ![Python version](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
 [![Pylint](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
 
@@ -12,13 +12,13 @@
 As a big fan of the band, I decided to combine business with pleasure and put into practice the knowledge I acquired in data visualization during my [postgraduate studies in Data Science](https://github.com/rodolfo-brandao/pos-graduacao) (pt-BR) using public data from Oasis Live '25 World Tour.
 
 ## Regarding the Dataset
-[![Kaggle dataset](https://img.shields.io/badge/Dataset-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
+[![Kaggle dataset](https://img.shields.io/badge/View_on-Kaggle-20BEFF)](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
 
-The dataset contains structured information about the Oasis Live ’25 World Tour, the reunion tour by the British rock band in 2025. It compiles detailed data about each concert, including dates, locations, venues, attendance figures, **estimated** revenues, and performed setlists.
+The dataset present in this repository contains structured information about the Oasis Live ’25 World Tour, the reunion tour by the British rock band in 2025. It compiles detailed data about each concert, including dates, locations, venues, attendance figures, **estimated** revenues, and performed setlists.
 
 Each row represents a single concert from the tour.
 
-The dataset consolidates publicly available information from multiple sources, including official tour announcements, financial reports, and concert setlist archives.
+It consolidates publicly available information from multiple sources, including official tour announcements, financial reports, and concert setlist archives.
 
 ### Contents
 The dataset includes information such as:
@@ -32,7 +32,7 @@ The dataset includes information such as:
 - Setlists performed during each concert
 - Source references used to compile the information
 
-This structure allows users to analyze the tour both event-by-event and aggregated by city, country, or residency.
+This structure allows analysis on tour both event-by-event and aggregated by city, country, or residency.
 
 ### Data Sources
 Information in the dataset was compiled from publicly available sources, including:
@@ -44,7 +44,7 @@ Each row includes reference fields indicating the source used for the correspond
 
 Primary types of sources include:
 - Official tour information
-- Concert industry reporting (e.g., Pollstar-style financial summaries)
+- Concert industry reporting (e.g. Pollstar-style financial summaries)
 - Public setlist databases
 
 ### Notes on Estimates
