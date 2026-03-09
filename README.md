@@ -1,12 +1,12 @@
+<p align="center">
+    <img src="assets/oasis-live-25-logo.png" width="350" alt="The Oasis Live '25 World Tour official logo.">
+</p>
+
 # Oasis Live '25 – Data Visualization
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-white.svg)](https://creativecommons.org/licenses/by/4.0/)
 ![Python version](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
 [![Pylint](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
-
-<p align="center">
-    <img src="assets/oasis-live-25-logo.png" width="300" alt="The Oasis Live '25 World Tour official logo.">
-</p>
 
 ## Overview
 As a big fan of the band, I decided to combine business with pleasure and put into practice the knowledge I acquired in data visualization during my [postgraduate studies in Data Science](https://github.com/rodolfo-brandao/pos-graduacao) (pt-BR) using public data from Oasis Live '25 World Tour.
