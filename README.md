@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/oasis-live-25-logo.png" width="350" alt="The Oasis Live '25 World Tour official logo.">
+    <img src="assets/oasis-live-25-banner.png" width="500" alt="Oasis Live '25 banner">
 </p>
 
 # Oasis Live '25 – Data Visualization
