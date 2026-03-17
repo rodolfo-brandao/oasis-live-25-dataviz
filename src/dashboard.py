@@ -14,7 +14,8 @@ st.set_page_config(
 st.title(body="Oasis Live '25")
 st.markdown(
     body="""
-    Data visualization applied to _estimates_ of each concert for Oasis' 2025 World Tour.\n\n
+    Data visualization applied to _estimates_ of each concert for the Live '25 World Tour,
+    from the English rock band [Oasis](https://en.wikipedia.org/wiki/Oasis_(band)).\n\n
     - Author: [Rodolfo Brandão](https://github.com/rodolfo-brandao)\n\n
     - Source Code: [GitHub](https://github.com/rodolfo-brandao/oasis-live-25-dataviz)\n\n
     - Dataset: [Kaggle](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
@@ -22,112 +23,136 @@ st.markdown(
 )
 
 
-# ===== Section 01 =====
-section1_col1, section1_col2 = st.columns(2, gap="medium")
-
-with section1_col1:
+with st.container(border=True):
+    # ===== Section 1 (container) =====
     st.subheader(
         body="Main Statistics"
     )
 
-    with st.container(border=True, width="stretch"):
-        col1, col2 = st.columns(2, gap="medium")
+    (
+        sec1_col1,
+        sec1_col2,
+        sec1_col3,
+        sec1_col4,
+    ) = st.columns(4, gap="small")
 
-        with col1:
-            st.metric(
-                label="🗓️ First Concert Date",
-                value=pd.to_datetime(
-                    df["date"], errors="coerce"
-                ).min().strftime(format="%B %d, %Y"),
-                border=True
-            )
+    with sec1_col1:
+        st.metric(
+            label="🗓️ First Concert Date",
+            value=pd.to_datetime(
+                df["date"], errors="coerce"
+            ).min().strftime(format="%B %d, %Y")
+        )
 
-            st.metric(
-                label="🌎 Total Countries",
-                value=len(df.groupby("country_or_constituent_country").sum()),
-                border=True
-            )
+    with sec1_col2:
+        st.metric(
+            label="🗓️ Last Concert Date",
+            value=pd.to_datetime(
+                df["date"], errors="coerce"
+            ).max().strftime(format="%B %d, %Y")
+        )
 
-            st.metric(
-                label="🔻 Lowest Attendance",
-                value=f"{df["attendance_estimated_per_concert"].min():,}",
-                border=True
-            )
+    with sec1_col3:
+        st.metric(
+            label="🌎 Total Countries",
+            value=len(df.groupby("country_or_constituent_country").sum())
+        )
 
-            st.metric(
-                label="🎫 Avg. Ticket Price (USD)",
-                value=df["avg_ticket_price_usd_pollstar"].unique()[0],
-                border=True
-            )
+    with sec1_col4:
+        st.metric(
+            label="🎸 Total Concerts",
+            value=len(df)
+        )
 
-        with col2:
-            st.metric(
-                label="🗓️ Last Concert Date",
-                value=pd.to_datetime(
-                    df["date"], errors="coerce"
-                ).max().strftime(format="%B %d, %Y"),
-                border=True
-            )
+    # ===== Section 2 (container) =====
+    (
+        sec2_col1,
+        sec2_col2,
+        sec2_col3,
+        sec2_col4
+    ) = st.columns(4, gap="small")
 
-            st.metric(
-                label="📍 Country with Most Concerts",
-                value=df["country_or_constituent_country"].value_counts().idxmax(),
-                border=True
-            )
+    with sec2_col1:
+        st.metric(
+            label="📍 Country with Most Concerts",
+            value=df["country_or_constituent_country"].value_counts().idxmax()
+        )
 
-            st.metric(
-                label="🔺 Highest Attendance",
-                value=f"{df["attendance_estimated_per_concert"].max():,}",
-                border=True
-            )
+    with sec2_col2:
+        st.metric(
+            label="🎫 Avg. Ticket Price (USD)",
+            value="$" + str(df["avg_ticket_price_usd_pollstar"].unique()[0])
+        )
 
-            st.metric(
-                label="🎸 Total Concerts",
-                value=len(df),
-                border=True
-            )
+    with sec2_col3:
+        st.metric(
+            label="🔻 Lowest Attendance",
+            value=f"{df["attendance_estimated_per_concert"].min():,}"
+        )
 
-with section1_col2:
+    with sec2_col4:
+        st.metric(
+            label="🔺 Highest Attendance",
+            value=f"{df["attendance_estimated_per_concert"].max():,}"
+        )
+
+
+# ===== Section 3 =====
+(
+    sec3_col1,
+    sec3_col2
+) = st.columns(2, gap="medium", border=True)
+
+with sec3_col1:
+    st.subheader(
+        body="Concert Distribution by Continent"
+    )
+
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_concerts_by_continent_chart(df)
+    )
+
+with sec3_col2:
     st.subheader(
         body="Total Concerts per Country"
     )
 
-    with st.container(border=True, width="stretch"):
-        st.plotly_chart(
-            figure_or_data=charts_factory.create_concerts_by_country_chart(df)
-        )
-
-
-# ===== Section 02 =====
-section2_col1, section2_col2 = st.columns(2, gap="medium")
-
-with section2_col1:
-    st.subheader(
-        body="Attendance per Concert"
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_concerts_by_country_chart(df)
     )
 
-    with st.container(border=True):
-        st.plotly_chart(
-            figure_or_data=charts_factory.create_attendance_by_concert_chart(df)
-        )
 
-with section2_col2:
+# ===== Section 4 =====
+(
+    sec4_col1,
+    sec4_col2
+) = st.columns(2, gap="medium", border=True)
+
+with sec4_col1:
+    st.subheader(
+        body="Estimated Attendance"
+    )
+
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_attendance_by_concert_chart(df)
+    )
+
+with sec4_col2:
     st.subheader(
         body="Crowd Progress by Concert"
     )
 
-    with st.container(border=True):
-        st.plotly_chart(
-            figure_or_data=charts_factory.create_attendance_progress_chart(df)
-        )
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_attendance_progress_chart(df)
+    )
 
 
 # ===== Section X ===== (last one)
-st.subheader(
-    body="Raw Data Sample"
-)
-
 with st.container(border=True):
+    st.subheader(
+        body="Raw Data Sample"
+    )
+
     columns_to_drop = [
         "concert_id",
         "attendance_scope_note",
