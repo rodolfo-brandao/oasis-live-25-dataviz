@@ -1,4 +1,4 @@
 [theme]
 base = "dark"
-font = "monospace"
+#font = "monospace"
 baseFontSize = 16
