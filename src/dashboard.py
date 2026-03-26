@@ -147,6 +147,30 @@ with sec4_col2:
     )
 
 
+# ===== Section 5 =====
+(
+    sec5_col1,
+    sec5_col2
+) = st.columns(2, gap="medium", border=True)
+
+with sec5_col1:
+    st.subheader(
+        body="Song Frequency by Continent"
+    )
+
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_song_frequency_by_continent_chart(df)
+    )
+
+with sec5_col2:
+    st.subheader(
+        body="Song Frequency by LP/EP"
+    )
+
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_song_frequency_by_album_chart(df)
+    )
+
 # ===== Section X ===== (last one)
 with st.container(border=True):
     st.subheader(
