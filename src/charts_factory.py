@@ -178,7 +178,7 @@ def create_concerts_by_continent_chart(df: pd.DataFrame) -> Figure:
 
 def create_concerts_by_country_chart(df: pd.DataFrame) -> Figure:
     """
-    Creates a bar chart with the total concerts per country.
+    Creates a horizontal bar chart with the total concerts per country.
     """
 
     plot_df = df.copy()
@@ -221,7 +221,7 @@ def create_concerts_by_country_chart(df: pd.DataFrame) -> Figure:
     )
 
     fig.update_layout(
-        xaxis_title="Concerts",
+        xaxis_title="Total Concerts",
         yaxis_title="Country",
         showlegend=True
     )
@@ -244,7 +244,7 @@ def create_concerts_by_country_chart(df: pd.DataFrame) -> Figure:
 
 def create_attendance_by_concert_chart(df: pd.DataFrame) -> Figure:
     """
-    Creates a bar chart of estimated attendance per concert.
+    Creates a horizontal bar chart of estimated attendance per concert.
     """
 
     plot_df = df.copy()
@@ -252,7 +252,7 @@ def create_attendance_by_concert_chart(df: pd.DataFrame) -> Figure:
     plot_df[ATTENDANCE_COL] = pd.to_numeric(plot_df[ATTENDANCE_COL], errors="coerce")
     plot_df["concert_label"] = _create_concert_label(df=plot_df, include_date=False)
     plot_df["continent"] = plot_df[COUNTRY_COL].map(geo_data.continent_names)
-    plot_df.sort_values(ATTENDANCE_COL, ascending=False)
+    plot_df = plot_df.sort_values(ATTENDANCE_COL, ascending=True).reset_index(drop=True)
 
     fig = px.bar(
         plot_df,
@@ -261,6 +261,10 @@ def create_attendance_by_concert_chart(df: pd.DataFrame) -> Figure:
         color="continent",
         color_discrete_map=color_pallet.CONTINENT_COLORS,
         orientation="h",
+        custom_data=[DATE_COL],
+        category_orders={
+            CONCERT_LABEL_COL: plot_df[CONCERT_LABEL_COL].tolist()
+        },
         labels={
             DATE_COL: "Date",
             "continent": "Continent",
@@ -268,8 +272,7 @@ def create_attendance_by_concert_chart(df: pd.DataFrame) -> Figure:
             "concert_label": "Concert"
         },
         hover_data={
-            ATTENDANCE_COL: ":,",
-            DATE_COL: "%y-%m-%d"
+            ATTENDANCE_COL: ":,"
         }
     )
 
@@ -281,7 +284,12 @@ def create_attendance_by_concert_chart(df: pd.DataFrame) -> Figure:
     fig.update_yaxes(tickformat=",")
 
     fig.update_traces(
-        hovertemplate="<b>%{label}</b><br>Attendance: %{value}<br>Date: %{date}<extra></extra>"
+        hovertemplate=(
+            "<b>%{y}</b><br>"
+            "Attendance: %{x:,}<br>"
+            "Date: %{customdata[0]|%b %d, %Y}"
+            "<extra></extra>"
+        )
     )
 
     return _apply_default_layout(fig, remove_title=True)
@@ -408,7 +416,10 @@ def create_song_frequency_by_album_chart(df: pd.DataFrame) -> Figure:
 
     plot_df = df.copy()
     album_df, _ = _compute_album_counts(plot_df)
-    colors = [color_pallet.OASIS_ALBUM_COLORS.get(a, "#ADB5BD") for a in album_df["album"]]
+    colors = [
+        color_pallet.OASIS_ALBUM_COLORS.get(album, "#ADB5BD")
+        for album in album_df["album"]
+    ]
 
     fig = go.Figure(
         go.Pie(
