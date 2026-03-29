@@ -90,7 +90,7 @@ ALBUMS: Dict[str, List[str]] = {
 }
 
 
-# Inverted lookup: song name -> album name
+# Inverted lookup: song -> album
 SONGS: Dict[str, str] = {
     song: album
     for album, songs in ALBUMS.items()
