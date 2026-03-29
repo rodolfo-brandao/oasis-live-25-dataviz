@@ -6,10 +6,63 @@
 
 [![License: CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-white.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/blob/main/LICENSE)
 ![Python version](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
+![Streamlit version](https://img.shields.io/badge/Streamlit-1.44.0-FF4B4B?logo=streamlit&logoColor=white)
 [![Pylint](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
 
 ## Overview
-As a big fan of the band, I decided to combine business with pleasure and put into practice the knowledge I acquired in data visualization during my [postgraduate studies in Data Science](https://github.com/rodolfo-brandao/pos-graduacao) (pt-BR) using public data from Oasis Live '25 World Tour.
+As a big fan of the band, I decided to combine business with pleasure and put into practice the knowledge I acquired in data visualization during my [postgraduate studies in Data Science](https://github.com/rodolfo-brandao/pos-graduacao) (pt-BR 🇧🇷) using public data from Oasis Live '25 World Tour.
+
+The final product is an interactive dashboard built and published with [Streamlit](https://streamlit.io/), featuring [Plotly](https://plotly.com/python/) charts that explore:
+
+- Attendance figures
+- Estimated revenues
+- Concert distribution
+- Setlist composition
+
+The dashboard is available at:
+- [oasis-live-25](https://oasis-live-25.streamlit.app/)
+
+## Tech Stack
+|Tool|Version|Description|
+|-|-|-|
+|Python|3.14|Core language|
+|Pandas|2.3.3|Data loading and transformation|
+|Plotly|6.6.0|Interactive chart rendering|
+|Streamlit|1.44.0|Dashboard framework and deployment|
+
+## How to Run Locally
+#### 1. Clone the repository
+```bash
+git clone https://github.com/rodolfo-brandao/oasis-live-25-dataviz.git
+cd oasis-live-25-dataviz
+```
+
+#### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+#### 3. Run the dashboard
+```bash
+streamlit run src/dashboard.py
+```
+
+## Project Structure
+```
+oasis-live-25-dataviz/
+├── assets/                         # repo banner and dashboard favicon
+├── data/
+│   └── oasis_live_25.csv           # tour dataset
+├── src/
+│   ├── dashboard.py                # Streamlit app entry point
+│   ├── charts_factory.py           # all Plotly chart functions
+│   └── utils/
+│       ├── color_pallet.py         # color system (album + continent palettes)
+│       ├── geo_data.py             # country -> continent/flag mappings
+│       └── oasis_discography.py    # album/song reference
+├── requirements.txt
+└── README.md
+```
 
 ## Regarding the Dataset
 [![Kaggle dataset](https://img.shields.io/badge/View_on-Kaggle-20BEFF)](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
