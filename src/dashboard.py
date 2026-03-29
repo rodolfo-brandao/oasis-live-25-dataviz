@@ -7,18 +7,17 @@ df = pd.read_csv("./data/oasis_live_25.csv")
 
 
 st.set_page_config(
-    page_title="Oasis Live '25 Dashboard",
+    page_title="Oasis Live '25 — Dashboard",
     page_icon="./assets/cropped-oasis-fav.png",
     layout="wide"
 )
 st.title(body="Oasis Live '25")
 st.markdown(
     body="""
-    Data visualization applied to _estimates_ of each concert for the Live '25 World Tour,
-    from the English rock band [Oasis](https://en.wikipedia.org/wiki/Oasis_(band)).\n\n
-    - Author: [Rodolfo Brandão](https://github.com/rodolfo-brandao)\n\n
-    - Source Code: [GitHub](https://github.com/rodolfo-brandao/oasis-live-25-dataviz)\n\n
-    - Dataset: [Kaggle](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
+        Data visualization applied to _estimates_ of each concert for the Live '25 World Tour.\n\n
+        - Author: [Rodolfo Brandão](https://github.com/rodolfo-brandao)\n\n
+        - Source Code: [GitHub](https://github.com/rodolfo-brandao/oasis-live-25-dataviz)\n\n
+        - Dataset: [Kaggle](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
     """
 )
 
@@ -80,14 +79,14 @@ with st.container(border=True):
 
     with sec2_col1:
         st.metric(
-            label="🎫 Avg. Ticket Price (USD)",
-            value=f"${df["avg_ticket_price_usd_pollstar"].unique()[0]}"
+            label="💰 Total Estimated Gross (USD)",
+            value=f"${df["gross_estimated_usd_per_concert"].sum():,.0f}"
         )
 
     with sec2_col2:
         st.metric(
-            label="💰 Total Estimated Gross (USD)",
-            value=f"${df["gross_estimated_usd_per_concert"].sum():,.0f}"
+            label="🎫 Avg. Ticket Price (USD)",
+            value=f"${df["avg_ticket_price_usd_pollstar"].unique()[0]}"
         )
 
     with sec2_col3:
@@ -117,7 +116,7 @@ with st.container(border=True):
 
 with sec3_col1:
     st.subheader(
-        body="Concert Distribution by Continent"
+        body="Concerts Share per Continent"
     )
 
     st.plotly_chart(
@@ -135,55 +134,57 @@ with sec3_col2:
 
 
 # ===== Section 4 =====
-(
-    sec4_col1,
-    sec4_col2
-) = st.columns(2, gap="medium", border=True)
-
-with sec4_col1:
+with st.container(border=True):
     st.subheader(
-        body="Estimated Attendance"
+        body="Estimated Attendance per Concert"
     )
 
     st.plotly_chart(
-        figure_or_data=charts_factory.create_attendance_by_concert_chart(df)
-    )
-
-with sec4_col2:
-    st.subheader(
-        body="Crowd Progress by Concert"
-    )
-
-    st.plotly_chart(
-        figure_or_data=charts_factory.create_attendance_progress_chart(df)
+        figure_or_data=charts_factory.create_attendance_by_venue_chart(df)
     )
 
 
 # ===== Section 5 =====
-(
-    sec5_col1,
-    sec5_col2
-) = st.columns(2, gap="medium", border=True)
-
-with sec5_col1:
+with st.container(border=True):
     st.subheader(
-        body="Song Frequency by Continent"
+        body="Estimated Attendance per Country"
     )
 
     st.plotly_chart(
-        figure_or_data=charts_factory.create_song_frequency_by_continent_chart(df)
+        figure_or_data=charts_factory.create_attendance_by_country_chart(df)
     )
 
-with sec5_col2:
+
+# ===== Section 6 =====
+(
+    sec6_col1,
+    sec6_col2
+) = st.columns(2, gap="medium", border=True)
+
+with sec6_col1:
     st.subheader(
-        body="Frequency of LPs/EPs per Song Played"
+        body="Live '25 Setlist — Song by Album"
+    )
+
+    st.markdown(
+        body="Since all setlists are the same, except tape intro songs.\n"
+    )
+
+    st.plotly_chart(
+        figure_or_data=charts_factory.create_setlist_flow_chart(df)
+    )
+
+with sec6_col2:
+    st.subheader(
+        body="Albums Share in Setlists"
     )
 
     st.plotly_chart(
         figure_or_data=charts_factory.create_song_frequency_by_album_chart(df)
     )
 
-# ===== Section 6 =====
+
+# ===== Section 7 =====
 with st.container(border=True):
     st.subheader(
         body="Raw Data Sample"
