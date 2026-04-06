@@ -116,7 +116,7 @@ with st.container(border=True):
 
 with sec3_col1:
     st.subheader(
-        body="Concerts Share per Continent"
+        body="Total Concerts per Continent"
     )
 
     st.plotly_chart(
@@ -163,11 +163,14 @@ with st.container(border=True):
 
 with sec6_col1:
     st.subheader(
-        body="Live '25 Setlist — Song by Album"
+        body="Live '25 Setlist — Songs by LP/EP"
     )
 
     st.markdown(
-        body="Since all setlists are the same, except tape intro songs.\n"
+        body="""
+            All setlists in the tour are the same, except tape intro songs.\n
+            _(hover the mouse for more details)_
+        """
     )
 
     st.plotly_chart(
@@ -176,7 +179,7 @@ with sec6_col1:
 
 with sec6_col2:
     st.subheader(
-        body="Albums Share in Setlists"
+        body="LP/EP Share in Setlist"
     )
 
     st.plotly_chart(
@@ -187,7 +190,7 @@ with sec6_col2:
 # ===== Section 7 =====
 with st.container(border=True):
     st.subheader(
-        body="Raw Data Sample"
+        body="Raw Data"
     )
 
     cols_to_drop = [
@@ -197,9 +200,13 @@ with st.container(border=True):
         "gross_estimation_note",
         "source_tour_dates_attendance_url",
         "source_tour_financials_url",
-        "source_setlist_url"
+        "source_setlist_url",
+        "setlist_variant",
+        "setlist"
     ]
 
     st.dataframe(
-        data=df.drop(columns=cols_to_drop).head(n=10)
+        data=df.drop(columns=cols_to_drop),
+        height=400,  # Enables vertical scroll
+        width="stretch"
     )

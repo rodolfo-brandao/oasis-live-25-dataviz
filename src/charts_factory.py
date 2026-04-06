@@ -172,7 +172,8 @@ def create_concerts_by_continent_chart(df: pd.DataFrame) -> Figure:
     )
 
     fig.update_traces(
-        hovertemplate="<b>%{label}</b><br>Concerts: %{value}<br>Share: %{percent}<extra></extra>"
+        texttemplate="%{label}<br>%{value}",
+        hovertemplate="<b>%{label}</b><br>Share: %{percent}<extra></extra>"
     )
 
     return _apply_default_layout(
@@ -467,7 +468,8 @@ def create_song_frequency_by_album_chart(df: pd.DataFrame) -> Figure:
                     "width": 0
                 },
             },
-            textinfo="label+percent",
+            # textinfo="label+value",
+            texttemplate="%{label}<br>%{value} song(s)",
             textposition="outside",
             hovertemplate="<b>%{label}</b><br>"
                             + "Unique Songs in Setlist" + ": %{value}<br>"
@@ -490,4 +492,4 @@ def create_song_frequency_by_album_chart(df: pd.DataFrame) -> Figure:
         margin= { "t": 80, "b": 20, "l": 20, "r": 160 }
     )
 
-    return fig
+    return _apply_default_layout(fig, remove_title=True)
