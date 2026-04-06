@@ -207,6 +207,6 @@ with st.container(border=True):
 
     st.dataframe(
         data=df.drop(columns=cols_to_drop),
-        width="stretch",
-        height="auto"  # Enables vertical scroll
+        use_container_width=True,
+        height=400
     )
