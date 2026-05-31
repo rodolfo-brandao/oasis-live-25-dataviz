@@ -106,16 +106,7 @@ oasis-live-25-dataviz/
 
 Regarding the dataset present in this repository, it contains structured information about the Oasis Live ’25 World Tour, the reunion tour by the British rock band in 2025. It compiles detailed data about each concert, including dates, locations, venues, attendance figures, **estimated** revenues, and performed setlists.
 
-> [!NOTE]
-> _The dataset is compiled exclusively from publicly available information and is intended for educational, analytical, and research purposes._
-> 
-> _All referenced materials remain the property of their respective sources._
->
-> _Also, once all the data sources were defined, Claude Code was used to collect the data and build the dataset._
-
-Each row represents a single concert from the tour.
-
-It consolidates publicly available information from multiple sources, including official tour announcements, financial reports, and concert setlist archives.
+Each row represents a single concert from the tour. It consolidates publicly available information from multiple sources, including official tour announcements, financial reports, and concert setlist archives.
 
 ### Contents
 The dataset includes information such as:
@@ -132,6 +123,14 @@ The dataset includes information such as:
 This structure allows analysis on tour both event-by-event and aggregated by city, country, or residency.
 
 ### Data Sources
+
+> [!NOTE]
+> _The dataset is compiled exclusively from publicly available information and is intended for educational, analytical, and research purposes._
+> 
+> _All referenced materials remain the property of their respective sources._
+>
+> _Also, once all data sources were defined, [Claude Code](https://claude.com/product/claude-code) was used to collect the data and build the dataset._
+
 Information in the dataset was compiled from publicly available sources, including:
 - Tour date and attendance reports
 - Concert financial reports and industry publications
