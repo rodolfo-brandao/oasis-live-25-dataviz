@@ -24,6 +24,23 @@ The final product is an interactive dashboard built and published with [Streamli
 The dashboard is available at:
 - [oasis-live-25](https://oasis-live-25.streamlit.app/)
 
+## Dashboard Preview
+
+### Summary & Concert Distribution
+A top-level summary of the tour — key figures such as total concerts, countries visited, cumulative attendance, and estimated gross revenue — followed by charts breaking down concert distribution across continents and countries.
+
+![Dashboard section 1](assets/oasis-live-25-dashboard-01.png)
+
+### Attendance Analysis
+A dot plot comparing estimated attendance across individual venues, and a treemap showing cumulative attendance per country grouped by continent.
+
+![Dashboard section 2](assets/oasis-live-25-dashboard-02.png)
+
+### Setlist & Raw Data
+A breakdown of the tour setlist by album/EP — both as a stacked bar and a share donut — followed by the full raw dataset for deeper exploration.
+
+![Dashboard section 3](assets/oasis-live-25-dashboard-03.png)
+
 ## Tech Stack
 |Tool|Version|Description|
 |-|-|-|
