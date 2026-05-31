@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/oasis-live-25-banner.png" width="500" alt="Oasis Live '25 banner">
+    <img src="assets/oasis-live-25-banner.png" width="450" alt="Oasis Live '25 banner">
 </p>
 
 # Oasis Live '25 – Data Visualization
@@ -12,6 +12,7 @@
 [![Pylint](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
 
 ## Overview
+
 As a big fan of the band, I decided to combine business with pleasure and put into practice the knowledge I acquired in data visualization during my [postgraduate studies in Data Science](https://github.com/rodolfo-brandao/pos-graduacao) using public data from Oasis Live '25 World Tour.
 
 The final product is an interactive dashboard built and published with [Streamlit](https://streamlit.io/), featuring [Plotly](https://plotly.com/python/) charts that explore:
@@ -42,6 +43,7 @@ A breakdown of the tour setlist by album/EP — both as a stacked bar and a shar
 ![Dashboard section 3](assets/oasis-live-25-dashboard-03.png)
 
 ## Tech Stack
+
 |Tool|Version|Description|
 |-|-|-|
 |Python|3.14|Core language|
@@ -49,24 +51,39 @@ A breakdown of the tour setlist by album/EP — both as a stacked bar and a shar
 |Plotly|6.6.0|Interactive chart rendering|
 |Streamlit|1.44.0|Dashboard framework and deployment|
 
-## How to Run Locally
-#### 1. Clone the repository
+## Run Locally
+
+### Requirements
+
+- [Python 3.14](https://www.python.org/downloads/release/python-3140/)
+- [uv](https://docs.astral.sh/uv/)
+
+### Setup
+
+1. Clone this repository & navigate to its root folder:
 ```bash
 git clone https://github.com/rodolfo-brandao/oasis-live-25-dataviz.git
 cd oasis-live-25-dataviz
 ```
 
-#### 2. Install dependencies
+2. Create `.venv` & activate it:
 ```bash
-pip install -r requirements.txt
+uv venv .venv && \
+source .venv/bin/activate
 ```
 
-#### 3. Run the dashboard
+3. Install all dependencies in the current `.venv`:
+```bash
+uv sync
+```
+
+4. Run the dashboard:
 ```bash
 streamlit run src/dashboard.py
 ```
 
 ## Project Structure
+
 ```
 oasis-live-25-dataviz/
 ├── assets/                         # repo banner and dashboard favicon
@@ -84,6 +101,7 @@ oasis-live-25-dataviz/
 ```
 
 ## Dataset
+
 [![Kaggle dataset](https://img.shields.io/badge/View_on-Kaggle-20BEFF)](https://www.kaggle.com/datasets/rodolfobrandao95/oasis-live-25/data)
 
 Regarding the dataset present in this repository, it contains structured information about the Oasis Live ’25 World Tour, the reunion tour by the British rock band in 2025. It compiles detailed data about each concert, including dates, locations, venues, attendance figures, **estimated** revenues, and performed setlists.
