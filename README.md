@@ -7,9 +7,7 @@
 [![License: CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-white.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/blob/main/LICENSE)
 ![Python version](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white)
 ![Streamlit version](https://img.shields.io/badge/Streamlit-1.44.0-FF4B4B?logo=streamlit&logoColor=white)
-![uv version](https://img.shields.io/badge/uv-0.11.16-DE5FE9?logo=uv&logoColor=white)
-![Claude Code](https://img.shields.io/badge/Claude-Code-D97757?logo=claude&logoColor=white)
-[![Pylint](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
+[![CI](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml/badge.svg)](https://github.com/rodolfo-brandao/oasis-live-25-dataviz/actions/workflows/pylint.yml)
 
 ## Overview
 
